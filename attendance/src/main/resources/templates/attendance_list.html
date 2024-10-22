@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>勤怠検索結果</title>
+</head>
+<body>
+    <h1>勤怠検索結果</h1>
+    <table border="1">
+		<thead>
+		        <tr>
+		            <th>ユーザーID</th>
+		            <th>報告年月</th>
+		            <th>開始日時</th>
+		            <th>終了日時</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr th:each="attendance : ${attendanceList}">
+		            <td th:text="${attendance.userId}">User ID</td>
+		            <td th:text="${attendance.reportMonth}">Report Month</td>
+					<td th:text="${#temporals.format(attendance.workStartAt, 'yyyy-MM-dd HH:mm:ss')}">Work Start</td>
+					<td th:text="${#temporals.format(attendance.workEndAt, 'yyyy-MM-dd HH:mm:ss')}">Work End</td>
+		        </tr>
+		    </tbody>
+    </table>
+</body>
+</html>
